@@ -1,13 +1,13 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='it' xml:lang='it' xmlns="http://www.w3.org/1999/xhtml">
+	
 <!-- 
 	Reveal.js slidedeck - Hakim El Hattab
 	lab.hakim.se/reveal-js/  
 -->
 
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 
 		<title>OSM - Simone Cortesi</title>
 
@@ -33,6 +33,18 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+	
+	<style>
+#footer {
+	position: absolute; 
+	left: 15%;
+	bottom: 1em;
+	height: 20px;
+	width: 100%;
+	margin: 0 auto;
+}
+</style>
+	
 	</head>
 
 	<body>
@@ -41,70 +53,28 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+ 
 				<section>
 					<h1>OSM per sviluppatori</h1>
 					<h3>ovvero: come smisi di preoccuparmi dei layer e iniziai ad amare i database</h3>
 					<p>Simone Cortesi</p>
-					<p><a href="twitter.com/simonecortesi">@simonecortesi</a> - simone@cortesi.com</p>
+					<p><a href="http://twitter.com/simonecortesi">@simonecortesi</a> - simone@cortesi.com</p>
 				</section>
 
-
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Why?</h2>
-					<br />
-					<h2 class="fragment">It's <strong>difficult</strong></h2>
-				</section>
-
-				<!--  Existing Solution  -->
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Existing Solutions</h2>
-					<ul>
-						<li>Linux, Virtual Machines</li>
-						<li>Osm2postgresql</li>
-						<li>OpenCageData</li>
-						<li>Geofabrik, Osm2Shp</li>
-						<li>HOT Data Store, <a href="http://wiki.openstreetmap.org/wiki/Humanitarian_OSM_Team/HOT_Package">HOT Package</a> (<a href="https://docs.google.com/document/d/1nZajHkX86_XSrkY32N5RRlyETRhrVhkcOkG4waxNw_M/edit?pli=1">doc</a>)
-						</li>
-						<li>Osm2pgsql, Osmosis</li>
-					</ul>
-
+				<section>
+					<iframe width="99%" height="600" src='https://www.mapbox.com/show-me-the-way/'></iframe>
+				<p>OpenStreetMap viene aggiornata ogni singolo secondo da migliaia di utenti sparsi per il Pianeta</p>
 				</section>
 
 				<!--  Solution
 				  Geofabrik -> osm2pgsql -> postgis -> qgis -->
-				<section data-transition="linear" data-background="#007777" data-background-transition="slide">
+				<section>
 					<h2>Solution</h2>
 					<img src="images/geofabrik-downloads.png" /><br />
 					<img src="images/osm-logo.png" /><br />
 					<img src="images/postgis-logo.png" />
 					<img src="images/qgis-logo.png" />
 				</section>
-
-				<section data-transition="linear"  data-background-transition="slide">
-					<h2>Process</h2>
-					<ol>
-						<li>Download Components
-							<ul>
-								<li class="fragment">Postgres &amp; PostGIS<br />Enterprise DB Stack Builder</li>
-								<li class="fragment">Osm2pgsql <small>&amp; style file</small></li>
-								<li class="fragment">OSM Data</li>
-								<li class="fragment">QGIS</li>
-							</ul>
-						</li>
-						<li class="fragment">Create Postgres User Role &amp; DB <br />(Using postgis template)<br /><pre><code data-trim contenteditable>CREATE ROLE osm LOGIN ENCRYPTED PASSWORD
-'md5a6d3a895f1b5e97a65512a4a5d4878af'
-  SUPERUSER CREATEDB
-   VALID UNTIL 'infinity';
-
-CREATE DATABASE osm
-  WITH ENCODING='UTF8'
-       TEMPLATE=template_postgis_20
-       CONNECTION LIMIT=-1;
-</code></pre></li>
-						<li class="fragment">Add hstore to DB<br /><pre><code data-trim contenteditable>CREATE EXTENSION HSTORE;
-</code></pre></li>
-					</ol>
-				</section>	
 
 				<section data-transition="linear" data-background="#4d7e65"data-background-transition="slide">
 					<h2>Process</h2>
@@ -195,6 +165,11 @@ CREATE DATABASE osm
 				</section>
 
 			</div>
+
+		<div id="footer">
+           <p>Simone Cortesi - CC-BY-SA - 2014</p>
+         </div>
+
 
 		</div>
 
